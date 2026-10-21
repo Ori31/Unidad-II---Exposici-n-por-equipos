@@ -10,7 +10,8 @@ Fundamentos de Arquitectura de Software y Desarrollo Backend.
 
 | Archivo | Qué es | Fecha |
 |---|---|---|
-| `equipo4_cloudflare_borrador.md` | Borrador de los apartados y guion de la demo | 21 de octubre |
+| `equipo4_cloudflare_borrador.docx` | Borrador de los apartados y guion de la demo (Word) | 21 de octubre |
+| `equipo4_cloudflare_borrador.md` | El mismo borrador en Markdown | 21 de octubre |
 | `equipo4_cloudflare_slides.pptx` | Presentación (editable) | 21 de octubre |
 | `equipo4_cloudflare_slides.pdf` | Presentación en PDF | 21 de octubre |
 | Reporte (máx. 5 páginas) | Pendiente | 26 de octubre |
