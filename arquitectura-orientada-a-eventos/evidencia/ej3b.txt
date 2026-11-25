@@ -1,0 +1,30 @@
+$ ./eda api-server        # terminal: api
+$ ./eda consumer --topic pedido.creado        # terminal: inv-p
+$ ./eda consumer --topic pedido.creado        # terminal: fin-p
+$ ./eda consumer --topic pedido.creado        # terminal: aten-p
+$ ./eda consumer --topic devolucion.registrada        # terminal: inv-d
+$ ./eda consumer --topic devolucion.registrada        # terminal: fin-d
+$ curl -s -X POST localhost:3000/topics/pedido.creado -H 'Content-Type: application/json' -d '{"pedidoId":"A-100"}'
+{"message":"message published"}
+$ curl -s -X POST localhost:3000/topics/devolucion.registrada -H 'Content-Type: application/json' -d '{"pedidoId":"A-100"}'
+{"message":"message published"}
+--- salida de la terminal inv-p ---
+Consumer subscribed to `pedido.creado` Topic
+Received event on topic: pedido.creado
+Event data: Message<pedido.creado: {"pedidoId":"A-100"}>
+--- salida de la terminal fin-p ---
+Consumer subscribed to `pedido.creado` Topic
+Received event on topic: pedido.creado
+Event data: Message<pedido.creado: {"pedidoId":"A-100"}>
+--- salida de la terminal aten-p ---
+Consumer subscribed to `pedido.creado` Topic
+Received event on topic: pedido.creado
+Event data: Message<pedido.creado: {"pedidoId":"A-100"}>
+--- salida de la terminal inv-d ---
+Consumer subscribed to `devolucion.registrada` Topic
+Received event on topic: devolucion.registrada
+Event data: Message<devolucion.registrada: {"pedidoId":"A-100"}>
+--- salida de la terminal fin-d ---
+Consumer subscribed to `devolucion.registrada` Topic
+Received event on topic: devolucion.registrada
+Event data: Message<devolucion.registrada: {"pedidoId":"A-100"}>

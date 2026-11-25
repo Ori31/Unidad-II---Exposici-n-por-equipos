@@ -1,0 +1,40 @@
+# Ejercicio 1: un consumidor recibe
+$ ./eda api-server        # terminal: api
+$ ./eda consumer --topic orderCreated        # terminal: c1
+$ curl -s -X POST localhost:3000/topics/orderCreated -H 'Content-Type: application/json' -d '{"order_id":123,"total":49.99}'
+{"message":"message published"}
+--- salida de la terminal c1 ---
+Consumer subscribed to `orderCreated` Topic
+Received event on topic: orderCreated
+Event data: Message<orderCreated: {"order_id":123,"total":49.99}>
+---
+# Paso 1: segundo consumidor y se publica de nuevo
+$ ./eda consumer --topic orderCreated        # terminal: c2
+$ curl -s -X POST localhost:3000/topics/orderCreated -H 'Content-Type: application/json' -d '{"order_id":124,"total":15.50}'
+{"message":"message published"}
+--- salida de la terminal c1 ---
+Consumer subscribed to `orderCreated` Topic
+Received event on topic: orderCreated
+Event data: Message<orderCreated: {"order_id":123,"total":49.99}>
+Received event on topic: orderCreated
+Event data: Message<orderCreated: {"order_id":124,"total":15.50}>
+---
+--- salida de la terminal c2 ---
+Consumer subscribed to `orderCreated` Topic
+Received event on topic: orderCreated
+Event data: Message<orderCreated: {"order_id":124,"total":15.50}>
+---
+# Paso 2: se detienen ambos consumidores y se publica
+# Ctrl+C en la terminal c1 (proceso detenido)
+# Ctrl+C en la terminal c2 (proceso detenido)
+$ docker exec eda-redis redis-cli PUBSUB NUMSUB orderCreated
+orderCreated
+0
+$ curl -s -X POST localhost:3000/topics/orderCreated -H 'Content-Type: application/json' -d '{"order_id":125,"total":99.00}'
+{"message":"message published"}
+# Paso 3: se reinicia un consumidor
+$ ./eda consumer --topic orderCreated        # terminal: c1
+--- salida de la terminal c1 ---
+Consumer subscribed to `orderCreated` Topic
+---
+# El pedido 125 no aparece: Redis Pub/Sub no lo guardó

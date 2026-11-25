@@ -15,3 +15,12 @@ Fundamentos de Arquitectura de Software y Desarrollo Backend.
 | `equipo4_cloudflare_slides.pptx` | Presentación (editable) | 21 de octubre |
 | `equipo4_cloudflare_slides.pdf` | Presentación en PDF | 21 de octubre |
 | Reporte (máx. 5 páginas) | Pendiente | 26 de octubre |
+
+## Arquitectura orientada a eventos · Laboratorio eda + Redis
+
+**Equipo 4:** Josue Enmanuel Poot Mateo, Juan Jose Zapata Buenfil, Sergio Orion Huerta Martinez, Diego Ramirez Magaña y Angel Lugo.
+
+| Archivo | Qué es | Fecha |
+|---|---|---|
+| `arquitectura-orientada-a-eventos/equipo4_eda_laboratorio.docx` | Respuestas a las 5 preguntas de la entrega, con evidencia de la terminal | 25 de noviembre |
+| `arquitectura-orientada-a-eventos/evidencia/` | Salida completa de los ejercicios 1 a 4 (y el 3 con la figura corregida) | 25 de noviembre |
